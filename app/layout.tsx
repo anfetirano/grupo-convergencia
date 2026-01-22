@@ -1,11 +1,13 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Appearance } from "@clerk/types";
 import "./globals.css";
-import Script from "next/script";
 import localFont from "next/font/local";
-import { templateMetadata } from "./_template/content/metadata";
 
-export const metadata = templateMetadata;
+export const metadata = {
+  title: "Grupo Convergencia S.A.",
+  description:
+    "Plataforma de trabajo interna para operaciones, proveedores y documentos.",
+};
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -17,9 +19,6 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
 });
 
-/**
- * This object can be customized to change Clerk's built-in appearance. To learn more: https://clerk.com/docs/customization/overview
- */
 const clerkAppearanceObject = {
   cssLayerName: "clerk",
   variables: { colorPrimary: "#000000" },
@@ -41,15 +40,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="es" className={`${geistSans.variable} ${geistMono.variable}`}>
       <ClerkProvider appearance={clerkAppearanceObject}>
-        <body className={`min-h-screen flex flex-col antialiased`}>
-          {children}
-        </body>
+        <body className="min-h-screen flex flex-col antialiased">{children}</body>
       </ClerkProvider>
-
-      <Script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js" />
-      <Script src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js" />
     </html>
   );
 }
