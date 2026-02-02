@@ -2,19 +2,19 @@ import LogoAnimated from "./logo-animated";
 import Typewriter from "./typewriter";
 import { Container } from "./ui/container";
 import { Button } from "./ui/button";
+import VantaCdnBg from "./vanta-cdn-bg";
 
 export default function Hero() {
   return (
-    <section className="min-h-screen bg-gradient-to-b from-[#071b2e] to-[#020b14] flex items-center">
-      <Container>
-        <div className="flex flex-col items-center text-center text-white">
+    <section className="relative min-h-screen bg-gradient-to-b from-[#071b2e] to-[#020b14] flex items-center overflow-hidden">
+      <VantaCdnBg />
 
-          {/* LOGO – contenedor fijo, NO afectado por el texto */}
+      <Container>
+        <div className="relative z-10 flex flex-col items-center text-center text-white">
           <div className="mb-10 flex justify-center">
             <LogoAnimated />
           </div>
 
-          {/* TEXTO – ancho controlado para que el typewriter no empuje nada */}
           <div className="w-full max-w-3xl">
             <h1 className="text-4xl md:text-6xl font-semibold leading-tight mb-6">
               <Typewriter />
@@ -33,7 +33,6 @@ export default function Hero() {
               Contactar
             </Button>
           </div>
-
         </div>
       </Container>
     </section>
