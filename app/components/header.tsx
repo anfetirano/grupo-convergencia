@@ -1,6 +1,13 @@
 "use client";
 
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import {
+  ClerkLoaded,
+  ClerkLoading,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 import { Container } from "./ui/container";
 import { Button } from "./ui/button";
 import Image from "next/image";
@@ -26,20 +33,32 @@ export function Header() {
         </div>
 
         <div className="hidden md:flex items-center gap-4 md:justify-end">
-          <SignedOut>
-            <SignInButton forceRedirectUrl="/dashboard" withSignUp={false}>
-              <button className="inline-flex items-center justify-center px-6 py-3 rounded-md text-sm font-medium transition border border-white/40 text-white hover:bg-white hover:text-black">
-                Acceso
-              </button>
-            </SignInButton>
-          </SignedOut>
+          {/* Fallback mientras Clerk carga */}
+          <ClerkLoading>
+            <a
+              href="/sign-in"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-md text-sm font-medium transition border border-white/40 text-white hover:bg-white hover:text-black"
+            >
+              Acceso
+            </a>
+          </ClerkLoading>
 
-          <SignedIn>
-            <Button href="/dashboard" variant="outline">
-              Dashboard
-            </Button>
-            <UserButton />
-          </SignedIn>
+          <ClerkLoaded>
+            <SignedOut>
+              <SignInButton forceRedirectUrl="/dashboard" withSignUp={false}>
+                <button className="inline-flex items-center justify-center px-6 py-3 rounded-md text-sm font-medium transition border border-white/40 text-white hover:bg-white hover:text-black">
+                  Acceso
+                </button>
+              </SignInButton>
+            </SignedOut>
+
+            <SignedIn>
+              <Button href="/dashboard" variant="outline">
+                Dashboard
+              </Button>
+              <UserButton />
+            </SignedIn>
+          </ClerkLoaded>
         </div>
       </Container>
     </header>
