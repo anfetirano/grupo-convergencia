@@ -15,6 +15,16 @@ export default function Hero() {
             <LogoAnimated />
           </div>
 
+          {/* Botón móvil */}
+          <div className="mb-8 flex justify-center md:hidden">
+            <a
+              href="/sign-in"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-md text-sm font-medium transition border border-white/40 text-white hover:bg-white hover:text-black"
+            >
+              Acceso
+            </a>
+          </div>
+
           <div className="w-full max-w-3xl">
             <h1 className="text-4xl md:text-6xl font-semibold leading-tight mb-6">
               <Typewriter />

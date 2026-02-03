@@ -25,7 +25,7 @@ export function Header() {
           </span>
         </div>
 
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-4 md:justify-end">
           <SignedOut>
             <SignInButton forceRedirectUrl="/dashboard" withSignUp={false}>
               <button className="inline-flex items-center justify-center px-6 py-3 rounded-md text-sm font-medium transition border border-white/40 text-white hover:bg-white hover:text-black">
