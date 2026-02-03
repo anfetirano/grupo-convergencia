@@ -1,15 +1,6 @@
 "use client";
 
-import {
-  ClerkLoaded,
-  ClerkLoading,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
 import { Container } from "./ui/container";
-import { Button } from "./ui/button";
 import Image from "next/image";
 
 export function Header() {
@@ -32,33 +23,13 @@ export function Header() {
           </span>
         </div>
 
-        <div className="hidden md:flex items-center gap-4 md:justify-end">
-          {/* Fallback mientras Clerk carga */}
-          <ClerkLoading>
-            <a
-              href="/sign-in"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-md text-sm font-medium transition border border-white/40 text-white hover:bg-white hover:text-black"
-            >
-              Acceso
-            </a>
-          </ClerkLoading>
-
-          <ClerkLoaded>
-            <SignedOut>
-              <SignInButton forceRedirectUrl="/dashboard" withSignUp={false}>
-                <button className="inline-flex items-center justify-center px-6 py-3 rounded-md text-sm font-medium transition border border-white/40 text-white hover:bg-white hover:text-black">
-                  Acceso
-                </button>
-              </SignInButton>
-            </SignedOut>
-
-            <SignedIn>
-              <Button href="/dashboard" variant="outline">
-                Dashboard
-              </Button>
-              <UserButton />
-            </SignedIn>
-          </ClerkLoaded>
+        <div className="flex items-center gap-4 md:justify-end">
+          <a
+            href="/sign-in"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-md text-sm font-medium transition border border-white/40 text-white hover:bg-white hover:text-black"
+          >
+            Acceso
+          </a>
         </div>
       </Container>
     </header>
