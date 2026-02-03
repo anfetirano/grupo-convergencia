@@ -5,3 +5,8 @@ html,
 body {
   height: 100%;
 }
+@keyframes flip {
+  0%, 45% { transform: rotateY(0deg); }
+  50%, 95% { transform: rotateY(180deg); }
+  100% { transform: rotateY(0deg); }
+}
